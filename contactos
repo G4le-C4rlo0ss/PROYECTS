@@ -1,0 +1,113 @@
+import java.util.Scanner;
+
+public class Main {
+    private String nombre, telefono, correo, cumpleaños;
+    private boolean bloqueado;
+
+    public Main (String nombre, String telefono, String correo, String cumpleaños) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.cumpleaños = cumpleaños;
+        this.bloqueado = false;
+    }
+
+    public void bloquear() {
+        if (!this.bloqueado) {
+            this.bloqueado = true;
+            System.out.println("Contacto bloqueado");
+        } else {
+            this.bloqueado = false;
+            System.out.println("Contacto desbloqueado");
+        }
+    }
+
+    public void editarNombre(String n) {
+        this.nombre = n;
+    }
+
+    public void editarCorreo() {
+        Scanner ent = new Scanner(System.in);
+        System.out.print("Ingrese un correo");
+        this.correo = ent.next();
+    }
+
+    public void editarTelefono() {
+        Scanner ent = new Scanner(System.in);
+        System.out.print("Ingrese un teléfono");
+        this.telefono = ent.next();
+    }
+
+    public void editarCumpleaños() {
+        Scanner ent = new Scanner(System.in);
+        System.out.print("Ingrese su cumpleaños");
+        this.cumpleaños = ent.next();
+    }
+
+    public String ver() {
+        return "\nContacto: " + this.nombre +
+               "\nTeléfono: " + this.telefono +
+               "\nCorreo: " + this.correo +
+               "\nCumpleaños: " + this.cumpleaños;
+    }
+
+
+ 
+    public static void main(String[] args) {
+        Scanner ent = new Scanner(System.in);
+        String nombre, telefono, correo, fecha;
+        int opc;
+
+        System.out.print("Nombre:");
+        nombre = ent.next();
+        System.out.print("Teléfono:");
+        telefono = ent.next();
+        System.out.print("Correo:");
+        correo = ent.next();
+        System.out.print("Fecha:");
+        fecha = ent.next();
+
+     Main per = new Main (nombre, telefono, correo, fecha);
+
+        do {
+            System.out.println("Opciones:" +
+                               "\n1. Ver contacto" +
+                               "\n2. Bloquear/desbloquear" +
+                               "\n3. Editar nombre" +
+                               "\n4. Editar teléfono" +
+                               "\n5. Editar correo" +
+                               "\n6. Editar cumpleaños" +
+                               "\n7. Salir");
+            opc = ent.nextInt();
+
+            switch (opc) {
+                case 1:
+                    System.out.println(per.ver());
+                    break;
+                case 2:
+                    per.bloquear();
+                    break;
+                case 3:
+                    System.out.println("Nuevo nombre:");
+                    String nuevoNombre = ent.next();
+                    per.editarNombre(nuevoNombre);
+                    break;
+                case 4:
+                    per.editarTelefono();
+                    break;
+                case 5:
+                    per.editarCorreo();
+                    break;
+                case 6:
+                    per.editarCumpleaños();
+                    break;
+                case 7:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción incorrecta");
+                    break;
+            }
+        } while (opc != 7);
+    }
+}
