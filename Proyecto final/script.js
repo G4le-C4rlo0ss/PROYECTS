@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mostrar la sección por defecto
     showSection('usuarios');
 
-    // Gestión de usuarios
     const usuarioForm = document.getElementById('usuarioForm');
     const listaUsuarios = document.getElementById('listaUsuarios');
 
@@ -51,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSelectOptions('usuarioReserva', usuarios, 'nombre');
     }
 
-    // Gestión de libros
     const libroForm = document.getElementById('libroForm');
     const listaLibros = document.getElementById('listaLibros');
 
